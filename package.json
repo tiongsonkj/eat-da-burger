@@ -1,0 +1,29 @@
+{
+  "name": "eat-da-burger",
+  "version": "1.0.0",
+  "description": "This is for the homework assignment eat-da-burger.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiongsonkj/eat-da-burger.git"
+  },
+  "keywords": [
+    "eat-da-burger"
+  ],
+  "author": "Kelvin Tiongson <kelvintiongson2018@u.northwestern.edu>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tiongsonkj/eat-da-burger/issues"
+  },
+  "homepage": "https://github.com/tiongsonkj/eat-da-burger#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "mysql": "^2.15.0"
+  }
+}
