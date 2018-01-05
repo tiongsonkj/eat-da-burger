@@ -1,15 +1,21 @@
 <h3>Eat-Da-Burger!</h3>
 
 <!-- handlebars ordered list of burgers you want to eat -->
-<ol>
+<ul>
 	{{#each burgers}}
-		
+		<li>
+			<p>
+				{{this.id}}. {{this.burger_name}}
+
+				<button data-burgerid="{{this.id}}" class="eatburger">Devour It!</button>
+			</p>
+		</li>
 	{{/each}}
-</ol>
+</ul>
 
 <!-- handlebars ordered list of burgers you have already eaten -->
-<ol>
-</ol>
+{{!-- <ol>
+</ol> --}}
 
 <form class="create-form">
 	<div class="form-group">
