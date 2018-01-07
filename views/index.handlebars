@@ -1,19 +1,5 @@
 <h3>Eat-Da-Burger!</h3>
 
-<!-- total list of burgers in database -->
-<ul>
-	{{#each burgers}}
-		<li>
-			<p>
-				{{this.id}}. {{this.burger_name}}
-
-				<button data-burgerid="{{this.id}}" class="eatburger">Devour It!</button>
-			</p>
-		</li>
-	{{/each}}
-</ul>
-<hr>
-
 <!-- handlebars ordered list of burgers you want to eat -->
 <h2>BURGERS NOT DEVOURED</h2>
 <ul>
@@ -49,50 +35,3 @@
 	<button type="submit">Submit</button>
 </form>
 <p>Enter a burger you want to eat. Click the "Submit" button.</p>
-
-<script type="text/javascript">
-	$(function() {
-		$("#addburger").on("submit", function(event) {
-
-			event.preventDefault();
-
-			var newBurger = {
-				burger_name: $("#newburger").val()
-			};
-
-			console.log(newBurger);
-			console.log(newBurger.burger_name);
-			// send POST request
-			$.ajax("/api/burgers", {
-				type: "POST",
-				data: newBurger
-			}).then(function() {
-
-				console.log("created new burger");
-
-				location.reload();
-			});
-		});
-
-		$(".eatburger").on("click", function(event) {
-
-			var id = $(this).data("id");
-			var newDevoured = $(this).data("devoured");
-			newDevoured = true;
-
-			var newDevouredState = {
-				devoured: newDevoured
-			};
-
-			// send PUT request
-			$.ajax("/api/burgers/" + id, {
-				type: "PUT",
-				data: newDevouredState
-			}).then(function() {
-				console.log("changed devoured status!");
-
-				location.reload();
-			});
-		});
-	});
-</script>
