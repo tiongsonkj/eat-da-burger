@@ -6,8 +6,6 @@ CREATE TABLE burgers
 (
 	id INT NOT NULL AUTO_INCREMENT,
 	burger_name VARCHAR(100) NOT NULL,
-	devoured BOOL,
-	date DATE,
     PRIMARY KEY (id)
 );
 

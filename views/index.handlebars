@@ -17,13 +17,34 @@
 {{!-- <ol>
 </ol> --}}
 
-<form class="create-form">
-	<div class="form-group">
-		<textarea id="burgerText" rows="3" cols="80"></textarea>
-	</div>
-
-	<button type="button">Submit</button>
-
-	<p>Enter a burger you want to eat. Click the "Submit" button.</p>
+<form id="addburger" class="button-size">
+	<input type="text" name="burger" id="newburger">
+	<button type="submit">Submit</button>
 </form>
+<p>Enter a burger you want to eat. Click the "Submit" button.</p>
 
+<script type="text/javascript">
+	$(function() {
+		$("#addburger").on("submit", function(event) {
+
+			event.preventDefault();
+
+			var newBurger = {
+				burger_name: $("#newburger").val()
+			};
+
+			console.log(newBurger);
+			console.log(newBurger.burger);
+			// send POST request
+			$.ajax("/api/burgers", {
+				type: "POST",
+				data: newBurger
+			}).then(function() {
+
+				console.log("created new burger");
+
+				// location.reload();
+			});
+		});
+	});
+</script>

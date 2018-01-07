@@ -16,10 +16,20 @@ router.get("/", function(request, response) {
 	});
 });
 
+// get the api page
+// router.get("/")
+
 // post route
 router.post("/api/burgers", function(request, response) {
-	burger.insertOne([
-		])
+
+	burger.insertOne(
+		"burger_name", [request.body.burger_name], function(result) {
+
+			console.log(result);
+
+			// response.json({ id: result.insertId});
+			response.redirect("/");
+	});
 });
 
 module.exports = router;
