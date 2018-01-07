@@ -23,7 +23,7 @@
 				<p>
 					{{this.id}}. {{this.burger_name}}
 
-					<button data-id="{{this.id}}" id="eatburger" data-devoured="false">Devour It!</button>
+					<button data-id="{{this.id}}" class="eatburger" data-devoured="false">Devour It!</button>
 				</p>
 			</li>			
 		{{/unless}}
@@ -74,10 +74,11 @@
 			});
 		});
 
-		$("#eatburger").on("click", function(event) {
+		$(".eatburger").on("click", function(event) {
 
 			var id = $(this).data("id");
 			var newDevoured = $(this).data("devoured");
+			newDevoured = true;
 
 			var newDevouredState = {
 				devoured: newDevoured
@@ -90,7 +91,7 @@
 			}).then(function() {
 				console.log("changed devoured status!");
 
-				//location.reload();
+				location.reload();
 			});
 		});
 	});
