@@ -1,6 +1,6 @@
 <h3>Eat-Da-Burger!</h3>
 
-<!-- handlebars ordered list of burgers you want to eat -->
+<!-- total list of burgers in database -->
 <ul>
 	{{#each burgers}}
 		<li>
@@ -12,10 +12,37 @@
 		</li>
 	{{/each}}
 </ul>
+<hr>
+
+<!-- handlebars ordered list of burgers you want to eat -->
+<h2>BURGERS NOT DEVOURED</h2>
+<ul>
+	{{#each burgers}}
+		{{#unless devoured}}
+			<li>
+				<p>
+					{{this.id}}. {{this.burger_name}}
+
+					<button data-id="{{this.id}}" class="eatburger" data-newdevour="false">Devour It!</button>
+				</p>
+			</li>			
+		{{/unless}}
+	{{/each}}
+</ul>
+<hr>
 
 <!-- handlebars ordered list of burgers you have already eaten -->
 {{!-- <ol>
 </ol> --}}
+<h2>BURGERS DEVOURED</h2>
+<ul>
+	{{#each burgers}}
+		{{#if devoured}}
+			{{> burgers/burger-block devour=true}}
+		{{/if}}
+	{{/each}}
+</ul>
+
 
 <form id="addburger" class="button-size">
 	<input type="text" name="burger" id="newburger">
