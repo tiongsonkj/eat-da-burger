@@ -23,7 +23,7 @@
 				<p>
 					{{this.id}}. {{this.burger_name}}
 
-					<button data-id="{{this.id}}" class="eatburger" data-newdevour="false">Devour It!</button>
+					<button data-id="{{this.id}}" id="eatburger" data-devoured="false">Devour It!</button>
 				</p>
 			</li>			
 		{{/unless}}
@@ -42,7 +42,7 @@
 		{{/if}}
 	{{/each}}
 </ul>
-
+<hr>
 
 <form id="addburger" class="button-size">
 	<input type="text" name="burger" id="newburger">
@@ -61,7 +61,7 @@
 			};
 
 			console.log(newBurger);
-			console.log(newBurger.burger);
+			console.log(newBurger.burger_name);
 			// send POST request
 			$.ajax("/api/burgers", {
 				type: "POST",
@@ -70,7 +70,27 @@
 
 				console.log("created new burger");
 
-				// location.reload();
+				location.reload();
+			});
+		});
+
+		$("#eatburger").on("click", function(event) {
+
+			var id = $(this).data("id");
+			var newDevoured = $(this).data("devoured");
+
+			var newDevouredState = {
+				devoured: newDevoured
+			};
+
+			// send PUT request
+			$.ajax("/api/burgers/" + id, {
+				type: "PUT",
+				data: newDevouredState
+			}).then(function() {
+				console.log("changed devoured status!");
+
+				//location.reload();
 			});
 		});
 	});

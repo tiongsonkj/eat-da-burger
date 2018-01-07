@@ -32,4 +32,19 @@ router.post("/api/burgers", function(request, response) {
 	});
 });
 
+router.put("/api/burgers/:id", function(request, response) {
+	var condition = "id = " + request.params.id;
+
+	console.log("condition", condition);
+
+	burger.updateOne(
+		{devoured: request.body.devoured}, condition, function(result) {
+			if (result.changedRows == 0) {
+				return response.status(404).end();
+			} else {
+				response.status(200).end();
+			}
+	});
+});
+
 module.exports = router;
