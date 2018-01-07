@@ -1,37 +1,42 @@
-<h3>Eat-Da-Burger!</h3>
+<img src="/assets/img/hamburger-cartoon.jpeg">
+<h2>Eat-Da-Burger!</h2>
 
-<!-- handlebars ordered list of burgers you want to eat -->
-<h2>BURGERS NOT DEVOURED</h2>
-<ul>
-	{{#each burgers}}
-		{{#unless devoured}}
-			<li>
-				<p>
-					{{this.id}}. {{this.burger_name}}
+<div class="brgNotDevoured">
+	<!-- handlebars ordered list of burgers you want to eat -->
+	<h3>BURGERS NOT DEVOURED</h3>
+	<ul>
+		{{#each burgers}}
+			{{#unless devoured}}
+				<li>
+					<p>
+						{{this.id}}. {{this.burger_name}}
 
-					<button data-id="{{this.id}}" class="eatburger" data-devoured="false">Devour It!</button>
-				</p>
-			</li>			
-		{{/unless}}
-	{{/each}}
-</ul>
-<hr>
+						<button data-id="{{this.id}}" class="eatburger" data-devoured="false">Devour It!</button>
+					</p>
+				</li>			
+			{{/unless}}
+		{{/each}}
+	</ul>
+</div>
 
-<!-- handlebars ordered list of burgers you have already eaten -->
-{{!-- <ol>
-</ol> --}}
-<h2>BURGERS DEVOURED</h2>
-<ul>
-	{{#each burgers}}
-		{{#if devoured}}
-			{{> burgers/burger-block devour=true}}
-		{{/if}}
-	{{/each}}
-</ul>
-<hr>
+<div class="brgDevoured">
+	<!-- handlebars ordered list of burgers you have already eaten -->
+	{{!-- <ol>
+	</ol> --}}
+	<h3>BURGERS DEVOURED</h3>
+	<ul>
+		{{#each burgers}}
+			{{#if devoured}}
+				{{> burgers/burger-block devour=true}}
+			{{/if}}
+		{{/each}}
+	</ul>
+</div>
 
-<form id="addburger" class="button-size">
-	<input type="text" name="burger" id="newburger">
-	<button type="submit">Submit</button>
-</form>
-<p>Enter a burger you want to eat. Click the "Submit" button.</p>
+<div class="submitForm">
+	<form id="addburger" class="button-size">
+		<input type="text" name="burger" id="newburger">
+		<button type="submit">Submit</button>
+	</form>
+	<p>Enter a burger you want to eat. Click the "Submit" button.</p>
+</div>
