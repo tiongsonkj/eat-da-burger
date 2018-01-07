@@ -16,9 +16,6 @@ router.get("/", function(request, response) {
 	});
 });
 
-// get the api page
-// router.get("/")
-
 // post route
 router.post("/api/burgers", function(request, response) {
 
@@ -27,7 +24,6 @@ router.post("/api/burgers", function(request, response) {
 
 			console.log(result);
 
-			// response.json({ id: result.insertId});
 			response.redirect("/");
 	});
 });
@@ -47,4 +43,5 @@ router.put("/api/burgers/:id", function(request, response) {
 	});
 });
 
+// export the router
 module.exports = router;

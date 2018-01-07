@@ -41,7 +41,6 @@ function objToSql(ob) {
 
 // create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
 var orm = {
-	// "cb" stands for call-back right?
 	selectAll: function(tableInput, cb) {
 		var queryString = "SELECT * FROM " + tableInput + ";";
 		connection.query(queryString, function(err, result) {
